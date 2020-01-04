@@ -21,51 +21,66 @@ connection.connect(function (err) {
 });
 
 function prompt() {
-    connection.query("SELECT * FROM products", function (err, res) {
+    connection.query("SELECT * FROM products", function (err, results) {
         if (err) throw err;
-        inquirer.prompt([
-            {
-                type: "input",
-                message: "Please Enter the ID of the product you would like to buy.",
-                name: "productID"
-            },
-            {
-                type: "input",
-                message: "How many units would you like to buy?",
-                name: "quantity"
-            }
-        ])
-            .then(function (inquirerResponse) {
-                productId = inquirerResponse.productID;
-                quantity = inquirerResponse.quantity;
+        inquirer
+            .prompt([
+                {
+                    type: "rawlist",
+                    message: "Please Enter the ID of the product you would like to buy.",
+                    name: "productId",
+                    choices: function() {
+                        var choiceArray = [];
+                        for (var i = 0; i < results.length; i++) {
+                            choiceArray.push(results[i].item_id);
+                        }
+                        return choiceArray;
+                        },
+                },
+                {
+                    type: "input",
+                    message: "How many units would you like to buy?",
+                    name: "quantity"
+                }
+            ])
+            .then(function (answer) {
+                productId = answer.productId;
+                quantity = answer.quantity;
                 var chosenItem;
 
-                if (productId > res.length) {
+                if (productId > results.length) {
                     console.log("Item ID invalid");
                     connection.end();
                 }
-                
 
-                // connection.query("SELECT * FROM products", function(err, res) {
-                //     if (err) throw err;
-                //     for (let i = 0; i < res.length; i++) {
-                //         if (res[i].quantity < )
-                //     }
 
-                // });
+                for (var i = 0; i < results.length; i++) {
+                    if (results[i].item_id === productId) {
+                        chosenItem = results[i];
+                    }
+                }
 
-                // connection.query(
-                //     "UPDATE products SET ? WHERE ?",
-                //     [
-                //         {
-                //             stock_quantity: 900
-                //         },
-                //         {
-                //             item_id: productId
-                //         }
-                //     ]
+                if (chosenItem.stock_quantity > quantity) {
+                    updatedQuantity = chosenItem.stock_quantity - quantity;
+                    totalCost = chosenItem.price * quantity;
 
-                // )
+                    connection.query(
+                        "UPDATE products SET ? WHERE ?",
+                        [
+                            {
+                                stock_quantity: updatedQuantity
+                            },
+                            {
+                                item_id: productId
+                            }
+                        ]
+                    )
+                    console.log("Total Purchase cost is: $" + totalCost);                    
+                }
+                else {
+                    console.log("Insufficient stock! Please choose fewer items.");
+                    connection.end();
+                }
 
             })
     });
