@@ -75,7 +75,8 @@ function prompt() {
                             }
                         ]
                     )
-                    console.log("Total Purchase cost is: $" + totalCost);                    
+                    console.log("Total Purchase cost is: $" + totalCost); 
+                    connection.end();                   
                 }
                 else {
                     console.log("Insufficient stock! Please choose fewer items.");
