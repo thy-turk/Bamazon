@@ -45,7 +45,7 @@ It is able to take in user input and provide information on movies, songs, bands
 <p>
 
 #### Shows the concert search functionality:
-![App Screenshot](/images/concert-proof.png)
+![App Screenshot](/assets/images/customersuccess.gif)
 
 #### Shows the spotify search working with and without an input:
 ![App Screenshot](/images/spotify-proof.png)
