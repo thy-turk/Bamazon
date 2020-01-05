@@ -39,16 +39,16 @@ It is able to take in user input and provide information on movies, songs, bands
 
 
 
-## Images showing the app working as intended:
+## Gifs showing the app working as intended:
 
-<details><summary>Image Proofs</summary>
+<details><summary>Proofs</summary>
 <p>
 
-#### Shows the concert search functionality:
+#### Shows customer successfuly making purchase:
 ![App Screenshot](/assets/images/customersuccess.gif)
 
-#### Shows the spotify search working with and without an input:
-![App Screenshot](/images/spotify-proof.png)
+#### Shows the customer requesting more than is available:
+![App Screenshot](/assets/images/customerfailure.gif)
 
 #### Shows the movie search working with and without an input: 
 ![App Screenshot](/images/movie-proof.png)
