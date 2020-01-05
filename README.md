@@ -45,7 +45,11 @@ It is able to take in user input and provide information on movies, songs, bands
 <p>
 
 #### Shows the concert search functionality:
+<<<<<<< HEAD
 ![App Screenshot](/images/concert-proof.png)
+=======
+![App Screenshot](/assets/images/customersuccess.gif)
+>>>>>>> 7b5eeaa9436a715b8b2ade84c92e61b0f69c24df
 
 #### Shows the spotify search working with and without an input:
 ![App Screenshot](/images/spotify-proof.png)
@@ -75,4 +79,8 @@ You'll need to install the following npm packages: axios, moment, node-spotify-a
 in the terminal whilst in the root folder. Once setup is complete, run the file by typing ```node liri.js``` and inquirer will prompt you from there!
 
 ## Roles
+<<<<<<< HEAD
 I am the only developer who worked on this App.
+=======
+I am the only developer who worked on this App.
+>>>>>>> 7b5eeaa9436a715b8b2ade84c92e61b0f69c24df
