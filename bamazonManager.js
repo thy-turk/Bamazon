@@ -124,7 +124,42 @@ function prompt() {
                 };
 
                 function newProduct() {
-                    
+                    inquirer.prompt([
+                        {
+                            type: "input",
+                            message: "Please enter the name of the product.",
+                            name: "newProduct",
+                        },
+                        {
+                            type: "input",
+                            message: "Please enter the department of the product.",
+                            name: "newDepartment",
+                        },
+                        {
+                            type: "input",
+                            message: "Please enter the price of the product.",
+                            name: "newPrice",
+                        },
+                        {
+                            type: "input",
+                            message: "Please enter the quantity of the product",
+                            name: "newQuantity",
+                        }
+                    ]).then(function (answer) {
+                        connection.query(
+                            "INSERT INTO products SET ?",
+                            {
+                                product_name: answer.newProduct,
+                                department_name: answer.newDepartment,
+                                price: answer.newPrice,
+                                stock_quantity: answer.newQuantity
+                            },
+                            function(err, res) {
+                                if (err) throw err;
+                                console.log(res.affectedRows + " product inserted!\n");
+                              }
+                        )
+                    })
                 }
             })
     })
