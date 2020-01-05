@@ -76,6 +76,7 @@ It also allows for managers to view products for sale, view low inventory, add t
 * node.js
 * javascript
 * npm 
+* mySQL
 
 ## How to run the app: 
 In order to run the app you'll need to clone the files in this repo to your machine.
